@@ -21,4 +21,12 @@ app.get('/ping', (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server running`)
+
+  setInterval(() => {
+      fetch(process.env.BACKEND_URL + '/ping')
+        .then(() => console.log('Self-ping success at', new Date().toLocaleTimeString()))
+        .catch(err => console.error('Ping failed:', err.message));
+    }, 5 * 60 * 1000);
+});
