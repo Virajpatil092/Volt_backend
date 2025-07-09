@@ -16,5 +16,9 @@ app.use('/api/batteries', require('./routes/battery'));
 app.use('/api/products', require('./routes/product'));
 app.use('/api/receipts', require('./routes/receipt'));
 
+app.get('/ping', (req, res) => {
+  res.status(200).send('pong');
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
