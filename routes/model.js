@@ -18,4 +18,9 @@ router.get('/:id', auth, async (req, res) => {
   res.json(model);
 });
 
+router.delete('/:id', auth, async (req, res) => {
+  await Model.findByIdAndDelete(req.params.id);
+  res.json({ message: 'Model deleted' });
+});
+
 module.exports = router;

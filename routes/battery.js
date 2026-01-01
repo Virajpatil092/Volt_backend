@@ -18,4 +18,9 @@ router.get('/:id', auth, async (req, res) => {
   res.json(battery);
 });
 
+router.delete('/:id', auth, async (req, res) => {
+  await Battery.findByIdAndDelete(req.params.id);
+  res.json({ message: 'Battery deleted' });
+});
+
 module.exports = router;
